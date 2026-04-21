@@ -26,7 +26,6 @@ public class Typist
 
 
 
-
     // Constructor of class Typist
     /**
      * Constructor for objects of class Typist.
@@ -38,6 +37,12 @@ public class Typist
      */
     public Typist(char typistSymbol, String typistName, double typistAccuracy)
     {
+        this.name = typistName;
+        this.symbol = typistSymbol;
+        this.progress = 0;
+        this.isBurntOut = false;
+        this.burnoutTurnsRemaining = 0;
+        setAccuracy(typistAccuracy);
 
     }
 
