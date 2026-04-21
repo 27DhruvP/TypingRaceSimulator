@@ -171,9 +171,6 @@ public class Typist
         }
     }
 
-
-    }
-
     /**
      * Moves the typist backwards by a given number of characters (a mistype).
      * Progress cannot go below zero — the typist cannot slide off the start.
@@ -182,6 +179,14 @@ public class Typist
      */
     public void slideBack(int amount)
     {
+        if (amount > 0)
+        {
+            progress -= amount;
+            if (progress < 0)
+            {
+                progress = 0;
+            }
+        }
 
     }
 
