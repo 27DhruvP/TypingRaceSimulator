@@ -165,6 +165,12 @@ public class Typist
      */
     public void typeCharacter()
     {
+        if (!isBurntOut)
+        {
+            progress++;
+        }
+    }
+
 
     }
 
