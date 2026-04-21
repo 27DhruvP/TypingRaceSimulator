@@ -57,8 +57,13 @@ public class Typist
      */
     public void burnOut(int turns)
     {
-
+        if (turns > 0)
+        {
+            isBurntOut = true;
+            burnoutTurnsRemaining = turns;
+        }
     }
+
 
     /**
      * Reduces the remaining burnout counter by one turn.
