@@ -201,6 +201,7 @@ public class TypingRace
     private void printRace()
     {
 
+
         System.out.print('\u000C'); // Clear terminal
 
         System.out.println("  TYPING RACE — passage length: " + passageLength + " chars");
@@ -235,6 +236,14 @@ public class TypingRace
      */
     private void printSeat(Typist theTypist)
     {
+
+        if (theTypist == null)
+        {
+            System.out.println("| (empty) |");
+            return;
+        }
+
+        
         int spacesBefore = theTypist.getProgress();
         int spacesAfter  = passageLength - theTypist.getProgress();
 
