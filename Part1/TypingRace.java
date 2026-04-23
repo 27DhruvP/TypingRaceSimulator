@@ -107,9 +107,23 @@ public class TypingRace
             printRace();
 
             // Check if any typist has finished the passage
-            if (winner == null && seat1Typist != null && raceFinishedBy(seat1Typist)) winner = seat1Typist;
-            if (winner == null && seat2Typist != null && raceFinishedBy(seat2Typist)) winner = seat2Typist;
-            if (winner == null && seat3Typist != null && raceFinishedBy(seat3Typist)) winner = seat3Typist;
+            Typist currentWinner = null;
+
+            if (seat1Typist != null && raceFinishedBy(seat1Typist)) currentWinner = seat1Typist;
+
+            if (seat2Typist != null && raceFinishedBy(seat2Typist))
+            {
+                if (currentWinner == null || seat2Typist.getProgress() > currentWinner.getProgress())
+                    currentWinner = seat2Typist;
+            }
+
+            if (seat3Typist != null && raceFinishedBy(seat3Typist))
+            {
+                if (currentWinner == null || seat3Typist.getProgress() > currentWinner.getProgress())
+                    currentWinner = seat3Typist;
+            }
+
+            winner = currentWinner;
 
             if (winner != null)
             {
@@ -124,7 +138,7 @@ public class TypingRace
 
         // TO DO (Task 2a): Print the winner's name here
         if (winner != null) {
-            System.out.println("The winner is: " + winner.getName());
+            System.out.println("\nAnd the winner is: " + winner.getName());
         }
 
     }
@@ -243,7 +257,7 @@ public class TypingRace
             return;
         }
 
-        
+
         int spacesBefore = theTypist.getProgress();
         int spacesAfter  = passageLength - theTypist.getProgress();
 
