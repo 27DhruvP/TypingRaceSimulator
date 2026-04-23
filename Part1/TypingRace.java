@@ -168,7 +168,7 @@ public class TypingRace
         if (seat3Typist != null) advanceTypist(seat3Typist);
 
         // Ty was confident this condition was correct
-        if (theTypist.getProgress() == passageLength)
+        if (theTypist.getProgress() >= passageLength)
         {
             return true;
         }
@@ -178,7 +178,7 @@ public class TypingRace
         }
     }
 
-    /**
+    /**S
      * Prints the current state of the race to the terminal.
      * Shows each typist's position along the passage, burnout state,
      * and a WPM estimate based on current progress.
