@@ -77,6 +77,7 @@ public class TypingRace
     public void startRace()
     {
         boolean finished = false;
+        Typist winner = null;
 
         // Reset all typists to the start of the passage and checks if its null
         // (Ty was in a hurry here)
@@ -87,15 +88,19 @@ public class TypingRace
         while (!finished)
         {
             // Advance each typist by one turn
-            advanceTypist(seat1Typist);
-            advanceTypist(seat2Typist);
-            advanceTypist(seat3Typist);
+            if (seat1Typist != null) advanceTypist(seat1Typist);
+            if (seat2Typist != null) advanceTypist(seat2Typist);
+            if (seat3Typist != null) advanceTypist(seat3Typist);
 
             // Print the current state of the race
             printRace();
 
             // Check if any typist has finished the passage
-            if ( raceFinishedBy(seat1Typist) || raceFinishedBy(seat2Typist) || raceFinishedBy(seat3Typist) )
+            if (winner == null && seat1Typist != null && raceFinishedBy(seat1Typist)) winner = seat1Typist;
+            if (winner == null && seat2Typist != null && raceFinishedBy(seat2Typist)) winner = seat2Typist;
+            if (winner == null && seat3Typist != null && raceFinishedBy(seat3Typist)) winner = seat3Typist;
+
+            if (winner != null)
             {
                 finished = true;
             }
@@ -106,7 +111,11 @@ public class TypingRace
             } catch (Exception e) {}
         }
 
-        // TODO (Task 2a): Print the winner's name here
+        // TO DO (Task 2a): Print the winner's name here
+        if (winner != null) {
+            System.out.println("The winner is: " + winner.getName());
+        }
+
     }
 
     /**
