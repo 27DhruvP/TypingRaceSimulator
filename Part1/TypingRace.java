@@ -258,8 +258,9 @@ public class TypingRace
         }
 
 
-        int spacesBefore = theTypist.getProgress();
-        int spacesAfter  = passageLength - theTypist.getProgress();
+        int progress = Math.min(theTypist.getProgress(), passageLength);
+        int spacesBefore = progress;
+        int spacesAfter = passageLength - progress;
 
         System.out.print('|');
         multiplePrint(' ', spacesBefore);
