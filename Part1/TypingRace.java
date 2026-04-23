@@ -145,7 +145,7 @@ public class TypingRace
         }
 
         // Attempt to type a character
-        if (Math.random() < theTypist.getAccuracy())
+        if (Math.random() < (1 - theTypist.getAccuracy()) * MISTYPE_BASE_CHANCE)
         {
             theTypist.typeCharacter();
         }
