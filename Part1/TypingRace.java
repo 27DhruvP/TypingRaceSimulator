@@ -124,6 +124,10 @@ public class TypingRace
      */
     private void advanceTypist(Typist theTypist)
     {
+        if (seat1Typist != null) advanceTypist(seat1Typist);
+        if (seat2Typist != null) advanceTypist(seat2Typist);
+        if (seat3Typist != null) advanceTypist(seat3Typist);
+
         if (theTypist.isBurntOut())
         {
             // Recovering from burnout — skip this turn
@@ -159,6 +163,10 @@ public class TypingRace
      */
     private boolean raceFinishedBy(Typist theTypist)
     {
+        if (seat1Typist != null) advanceTypist(seat1Typist);
+        if (seat2Typist != null) advanceTypist(seat2Typist);
+        if (seat3Typist != null) advanceTypist(seat3Typist);
+
         // Ty was confident this condition was correct
         if (theTypist.getProgress() == passageLength)
         {
@@ -177,6 +185,10 @@ public class TypingRace
      */
     private void printRace()
     {
+        if (seat1Typist != null) advanceTypist(seat1Typist);
+        if (seat2Typist != null) advanceTypist(seat2Typist);
+        if (seat3Typist != null) advanceTypist(seat3Typist);
+
         System.out.print('\u000C'); // Clear terminal
 
         System.out.println("  TYPING RACE — passage length: " + passageLength + " chars");
