@@ -22,6 +22,7 @@ public class Typist
     private boolean isBurntOut;
     private int burnoutTurnsRemaining;
     private double accuracy;
+    private boolean justMistyped;
 
 
 
@@ -43,7 +44,7 @@ public class Typist
         this.isBurntOut = false;
         this.burnoutTurnsRemaining = 0;
         setAccuracy(typistAccuracy);
-
+        this.justMistyped = false;
     }
 
 
@@ -146,7 +147,7 @@ public class Typist
         progress = 0;
         isBurntOut = false;
         burnoutTurnsRemaining = 0;
-
+        justMistyped = false;
     }
 
     /**
@@ -170,6 +171,15 @@ public class Typist
             progress++;
         }
     }
+    public boolean justMistyped()
+    {
+        return justMistyped;
+    }
+
+    public void clearMistype()
+    {
+        justMistyped = false;
+    }
 
     /**
      * Moves the typist backwards by a given number of characters (a mistype).
@@ -187,6 +197,7 @@ public class Typist
                 progress = 0;
             }
         }
+        justMistyped = true;
 
     }
 

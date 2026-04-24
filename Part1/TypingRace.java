@@ -22,7 +22,7 @@ public class TypingRace
     // Accuracy thresholds for mistype and burnout events
     // (Ty tuned these values "by feel". They may need adjustment.)
     private static final double MISTYPE_BASE_CHANCE = 0.3;
-    private static final int    SLIDE_BACK_AMOUNT   = 2;
+    private static final int    SLIDE_BACK_AMOUNT   = 1;
     private static final int    BURNOUT_DURATION     = 3;
 
     /**
@@ -158,7 +158,9 @@ public class TypingRace
      */
     private void advanceTypist(Typist theTypist)
     {
+        theTypist.clearMistype();
 
+        
         if (theTypist.isBurntOut())
         {
             // Recovering from burnout — skip this turn
@@ -177,15 +179,17 @@ public class TypingRace
             theTypist.typeCharacter();
         }
 
+        // Mistype check — the probability should reflect the typist's accuracy
+        else if (Math.random() < (1 - theTypist.getAccuracy()) * MISTYPE_BASE_CHANCE)
+        {
+            theTypist.slideBack(SLIDE_BACK_AMOUNT);
+        }
+
         if (theTypist.getProgress() >= passageLength)
         {
             return;
         }
-        // Mistype check — the probability should reflect the typist's accuracy
-        if (Math.random() < (1 - theTypist.getAccuracy()) * MISTYPE_BASE_CHANCE)
-        {
-            theTypist.slideBack(SLIDE_BACK_AMOUNT);
-        }
+
 
         // Burnout check — pushing too hard increases burnout risk
         // (probability scales with accuracy squared, capped at ~0.05)
@@ -282,6 +286,12 @@ public class TypingRace
             System.out.print('~');
             spacesAfter--; // symbol + ~ together take two characters
         }
+        else if (theTypist.justMistyped())
+        {
+            System.out.print('<'); // show mistype indicator
+            spacesAfter--;
+        }
+
 
         multiplePrint(' ', spacesAfter);
         System.out.print('|');
@@ -294,6 +304,14 @@ public class TypingRace
                 + " (Accuracy: " + theTypist.getAccuracy() + ")"
                 + " BURNT OUT (" + theTypist.getBurnoutTurnsRemaining() + " turns)");
         }
+
+        else if (theTypist.justMistyped())
+        {
+            System.out.print(theTypist.getName()
+                + " (Accuracy: " + theTypist.getAccuracy() + ")"
+                + " ← JUST MISTYPED");
+        }
+
         else
         {
             System.out.print(theTypist.getName()
