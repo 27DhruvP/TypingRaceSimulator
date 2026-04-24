@@ -166,12 +166,21 @@ public class TypingRace
             return;
         }
 
+        if (theTypist.getProgress() >= passageLength)
+        {
+            return; // Already finished — skip mistype and burnout checks
+        }
+
         // Attempt to type a character
-            
+        if (Math.random() < theTypist.getAccuracy())
         {
             theTypist.typeCharacter();
         }
 
+        if (theTypist.getProgress() >= passageLength)
+        {
+            return;
+        }
         // Mistype check — the probability should reflect the typist's accuracy
         if (Math.random() < (1 - theTypist.getAccuracy()) * MISTYPE_BASE_CHANCE)
         {
@@ -207,7 +216,7 @@ public class TypingRace
         }
     }
 
-    /**S
+    /**
      * Prints the current state of the race to the terminal.
      * Shows each typist's position along the passage, burnout state,
      * and a WPM estimate based on current progress.
