@@ -23,6 +23,8 @@ public class Typist
     private int burnoutTurnsRemaining;
     private double accuracy;
     private boolean justMistyped;
+    private double initialAccuracy;
+    
 
 
 
@@ -45,6 +47,7 @@ public class Typist
         this.burnoutTurnsRemaining = 0;
         setAccuracy(typistAccuracy);
         this.justMistyped = false;
+        this.initialAccuracy = typistAccuracy;
     }
 
 
@@ -93,6 +96,11 @@ public class Typist
     public double getAccuracy()
     {
         return accuracy;
+    }
+
+    public double getInitialAccuracy()
+    {
+        return initialAccuracy;
     }
 
     /**
