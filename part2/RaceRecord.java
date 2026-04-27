@@ -2,8 +2,6 @@ package part2;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.ArrayList;
 
 /**
  * Immutable record of a single typist's performance in one race.
