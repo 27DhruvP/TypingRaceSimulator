@@ -40,9 +40,6 @@ Then run:
 java TypingRace
 ```
 
-## Part 2 — GUI Simulation
-
-To be implemented as part of the coursework. Place all GUI-related source files in this folder. The graphical version is started by calling `startRaceGUI()`
 
 
 ## Part 2 — GUI Simulation
@@ -111,8 +108,6 @@ java part2.Main
 - Flash Typist: personal best WPM above 60
 - Veteran: 10 total races completed
 - Century Club: 100 cumulative points earned
-```
-
 
 ## Dependencies
 
