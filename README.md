@@ -74,6 +74,47 @@ Then run:
 java part2.Main
 ```.
 
+
+Here are all four sections rewritten as plain prose lists:
+
+```markdown
+### Difficulty Modifiers
+
+- Autocorrect On: slide-back on mistype is halved
+- Caffeine Mode: accuracy +10% for first 10 turns, then burnout risk increases
+- Night Shift: all typists start with accuracy −8%
+
+### Typist Options
+
+- Touch Typist: 85% base accuracy, higher burnout chance
+- Hunt and Peck: 55% base accuracy, low burnout chance
+- Phone Thumbs: 70% base accuracy
+- Voice-to-Text: 60% base accuracy, lowest burnout chance
+- Mechanical keyboard: low mistype modifier, full speed
+- Membrane keyboard: moderate mistype modifier, slight speed penalty
+- Touchscreen keyboard: high mistype modifier, reduced speed
+- Stenography keyboard: lowest mistype modifier, speed bonus
+- Wrist Support: burnout duration reduced by 2 turns
+- Energy Drink: accuracy +10% first half, −10% second half
+- Noise-Cancel Headphones: mistype chance −2%
+
+### Sponsors
+
+- KeyCorp: finish without any burnout — +50 points
+- SpeedKeys: finish in top 2 — +30 points
+- AccurateType: finish with accuracy above 80% — +40 points
+- IronDesk: no burnout and finish 1st — +35 points
+
+### Badges
+
+- Speed Demon: 3 consecutive race wins
+- Iron Fingers: 5 races without burnout
+- Flash Typist: personal best WPM above 60
+- Veteran: 10 total races completed
+- Century Club: 100 cumulative points earned
+```
+
+
 ## Dependencies
 
 - Java Development Kit (JDK) 11 or higher
