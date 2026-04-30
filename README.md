@@ -42,7 +42,37 @@ java TypingRace
 
 ## Part 2 — GUI Simulation
 
-To be implemented as part of the coursework. Place all GUI-related source files in this folder. The graphical version is started by calling `startRaceGUI()`.
+To be implemented as part of the coursework. Place all GUI-related source files in this folder. The graphical version is started by calling `startRaceGUI()`
+
+
+## Part 2 — GUI Simulation
+
+A graphical typing race simulator built with Java Swing. Features a 5-screen
+interface with live race animation, per-typist customisation, a sponsor system,
+badges, and a persistent leaderboard with an upgrade shop.
+
+### How to compile
+
+```bash
+cd Part2
+javac part2/*.java
+```
+
+### How to run
+
+The graphical version is started by calling `startRaceGUI()` on the `Main` class:
+
+```java
+public static void main(String[] args) {
+    Main.startRaceGUI();
+}
+```
+
+Then run:
+
+```bash
+java part2.Main
+```.
 
 ## Dependencies
 
