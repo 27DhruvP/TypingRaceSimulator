@@ -75,9 +75,6 @@ java part2.Main
 ```.
 
 
-Here are all four sections rewritten as plain prose lists:
-
-```markdown
 ### Difficulty Modifiers
 
 - Autocorrect On: slide-back on mistype is halved
