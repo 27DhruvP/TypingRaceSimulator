@@ -1,22 +1,30 @@
 /**
- * Write a description of class Typist here.
+ * The Typist class is the class which included all the key features of the 
+ * application. It will include methods like burnOut, recoverFromBurnout, 
+ * getAccuracy, getProgress, getName, getSymbol, which will be used in the
+ * TypingRace class to create the game.
  *
  * Starter code generously abandoned by Ty Posaurus, your predecessor,
  * who typed with two fingers and considered that "good enough".
  * He left a sticky note: "the slide-back thing is optional probably".
  * It is not optional. Good luck.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Dhruv Patel
+ * @version v1.0 (20/04/2026)
  */
 public class Typist
 {
     // Fields of class Typist
-    // Hint: you will need six fields. Think carefully about their types.
-    // One of them tracks how far along the passage the typist has reached.
-    // Another tracks whether the typist is currently burnt out.
-    // A third tracks HOW MANY turns of burnout remain (not just whether they are burnt out).
-    // The remaining three should be fairly obvious.
+
+    private String name;
+    private char symbol;
+    private int progress;
+    private boolean isBurntOut;
+    private int burnoutTurnsRemaining;
+    private double accuracy;
+    private boolean justMistyped;
+    private double initialAccuracy;
+    
 
 
 
@@ -32,7 +40,14 @@ public class Typist
      */
     public Typist(char typistSymbol, String typistName, double typistAccuracy)
     {
-
+        this.name = typistName;
+        this.symbol = typistSymbol;
+        this.progress = 0;
+        this.isBurntOut = false;
+        this.burnoutTurnsRemaining = 0;
+        setAccuracy(typistAccuracy);
+        this.justMistyped = false;
+        this.initialAccuracy = typistAccuracy;
     }
 
 
@@ -46,8 +61,13 @@ public class Typist
      */
     public void burnOut(int turns)
     {
-
+        if (turns > 0)
+        {
+            isBurntOut = true;
+            burnoutTurnsRemaining = turns;
+        }
     }
+
 
     /**
      * Reduces the remaining burnout counter by one turn.
@@ -56,7 +76,16 @@ public class Typist
      */
     public void recoverFromBurnout()
     {
+        if (isBurntOut)
+        {
+            burnoutTurnsRemaining--;
 
+            if (burnoutTurnsRemaining <= 0)
+            {
+                burnoutTurnsRemaining = 0;
+                isBurntOut = false;
+            }
+        }
     }
 
     /**
@@ -66,7 +95,12 @@ public class Typist
      */
     public double getAccuracy()
     {
-        return 0.0; // placeholder - replace with correct implementation
+        return accuracy;
+    }
+
+    public double getInitialAccuracy()
+    {
+        return initialAccuracy;
     }
 
     /**
@@ -78,7 +112,7 @@ public class Typist
      */
     public int getProgress()
     {
-        return 0; // placeholder - replace with correct implementation
+        return progress;
     }
 
     /**
@@ -88,7 +122,7 @@ public class Typist
      */
     public String getName()
     {
-        return ""; // placeholder - replace with correct implementation
+        return name;
     }
 
     /**
@@ -98,7 +132,7 @@ public class Typist
      */
     public char getSymbol()
     {
-        return ' '; // placeholder - replace with correct implementation
+        return symbol;
     }
 
     /**
@@ -109,7 +143,7 @@ public class Typist
      */
     public int getBurnoutTurnsRemaining()
     {
-        return 0; // placeholder - replace with correct implementation
+        return burnoutTurnsRemaining;
     }
 
     /**
@@ -118,7 +152,10 @@ public class Typist
      */
     public void resetToStart()
     {
-
+        progress = 0;
+        isBurntOut = false;
+        burnoutTurnsRemaining = 0;
+        justMistyped = false;
     }
 
     /**
@@ -128,7 +165,7 @@ public class Typist
      */
     public boolean isBurntOut()
     {
-        return false; // placeholder - replace with correct implementation
+        return isBurntOut;
     }
 
     /**
@@ -137,7 +174,19 @@ public class Typist
      */
     public void typeCharacter()
     {
+        if (!isBurntOut)
+        {
+            progress++;
+        }
+    }
+    public boolean justMistyped()
+    {
+        return justMistyped;
+    }
 
+    public void clearMistype()
+    {
+        justMistyped = false;
     }
 
     /**
@@ -148,6 +197,15 @@ public class Typist
      */
     public void slideBack(int amount)
     {
+        if (amount > 0)
+        {
+            progress -= amount;
+            if (progress < 0)
+            {
+                progress = 0;
+            }
+        }
+        justMistyped = true;
 
     }
 
@@ -159,6 +217,18 @@ public class Typist
      */
     public void setAccuracy(double newAccuracy)
     {
+        if (newAccuracy < 0.0)
+        {
+            accuracy = 0.0;
+        }
+        else if (newAccuracy > 1.0)
+        {
+            accuracy = 1.0;
+        }
+        else
+        {
+            accuracy = newAccuracy;
+        }
 
     }
 
@@ -169,6 +239,7 @@ public class Typist
      */
     public void setSymbol(char newSymbol)
     {
+        symbol = newSymbol;
 
     }
 
