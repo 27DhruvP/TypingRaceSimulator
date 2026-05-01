@@ -51,7 +51,7 @@ badges, and a persistent leaderboard with an upgrade shop.
 ### How to compile
 
 ```bash
-cd Part2
+cd TypingRaceSimulator
 javac part2/*.java
 ```
 

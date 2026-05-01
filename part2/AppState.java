@@ -88,11 +88,11 @@ public class AppState {
 
     private void awardBadges(String name) {
         Set<String> b = badges.computeIfAbsent(name, k -> new LinkedHashSet<>());
-        if (consecutiveWins.getOrDefault(name, 0) >= 3)         b.add("🏆 Speed Demon");
-        if (racesWithoutBurnout.getOrDefault(name, 0) >= 5)     b.add("🔩 Iron Fingers");
-        if (personalBestWpm.getOrDefault(name, 0.0) > 60)       b.add("⚡ Flash Typist");
-        if (totalRaces.getOrDefault(name, 0) >= 10)              b.add("🎖 Veteran");
-        if (cumulativePoints.getOrDefault(name, 0) >= 100)       b.add("💯 Century Club");
+        if (consecutiveWins.getOrDefault(name, 0) >= 3)         b.add("Speed Demon");
+        if (racesWithoutBurnout.getOrDefault(name, 0) >= 5)     b.add("Iron Fingers");
+        if (personalBestWpm.getOrDefault(name, 0.0) > 60)       b.add("Flash Typist");
+        if (totalRaces.getOrDefault(name, 0) >= 10)              b.add("Veteran");
+        if (cumulativePoints.getOrDefault(name, 0) >= 100)       b.add("Century Club");
     }
 
     // Queries

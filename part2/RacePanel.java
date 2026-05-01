@@ -272,7 +272,6 @@ public class RacePanel extends JPanel {
             g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
             List<Typist>       typists = engine.getTypists();
-            List<TypistConfig> configs = engine.getConfigs();
             int pLen  = engine.getPassageLength();
             int W     = getWidth() - 20;
             int laneH = 50;

@@ -43,22 +43,22 @@ public class LeaderboardPanel extends JPanel {
     public void refresh() {
         contentArea.removeAll();
 
-        contentArea.add(sectionLabel("🏆 Global Leaderboard"));
+        contentArea.add(sectionLabel(" Global Leaderboard"));
         contentArea.add(Box.createVerticalStrut(10));
         contentArea.add(buildLeaderboardTable());
         contentArea.add(Box.createVerticalStrut(24));
 
-        contentArea.add(sectionLabel("🎖 Badges"));
+        contentArea.add(sectionLabel(" Badges"));
         contentArea.add(Box.createVerticalStrut(8));
         contentArea.add(buildBadgesPanel());
         contentArea.add(Box.createVerticalStrut(24));
 
-        contentArea.add(sectionLabel("💰 Sponsor Earnings & Shop"));
+        contentArea.add(sectionLabel(" Sponsor Earnings & Shop"));
         contentArea.add(Box.createVerticalStrut(8));
         contentArea.add(buildEarningsPanel());
         contentArea.add(Box.createVerticalStrut(24));
 
-        contentArea.add(sectionLabel("📜 Full Race History"));
+        contentArea.add(sectionLabel(" Full Race History"));
         contentArea.add(Box.createVerticalStrut(8));
         contentArea.add(buildHistoryTable());
 
@@ -75,7 +75,7 @@ public class LeaderboardPanel extends JPanel {
         JPanel p = new JPanel(new BorderLayout());
         p.setBackground(UITheme.BG_DARK);
         p.setBorder(new EmptyBorder(24, 40, 10, 40));
-        JLabel title = new JLabel("⌨  TYPING RACE  — Leaderboard", SwingConstants.CENTER);
+        JLabel title = new JLabel("TYPING RACE  — Leaderboard", SwingConstants.CENTER);
         title.setFont(UITheme.FONT_TITLE);
         title.setForeground(UITheme.ACCENT);
         p.add(title);
@@ -171,7 +171,7 @@ public class LeaderboardPanel extends JPanel {
             JLabel nameLbl = new JLabel(name);
             nameLbl.setFont(UITheme.FONT_BODY); nameLbl.setForeground(UITheme.TEXT_WHITE);
 
-            JLabel coinsLbl = new JLabel("💰 " + coins + " coins");
+            JLabel coinsLbl = new JLabel(coins + " coins");
             coinsLbl.setFont(UITheme.FONT_BODY); coinsLbl.setForeground(UITheme.TEXT_GOLD);
 
             String upgText = upg == 0 ? "No upgrades" : "Upgrade Lv" + upg;

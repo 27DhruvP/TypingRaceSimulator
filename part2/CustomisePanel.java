@@ -152,9 +152,9 @@ public class CustomisePanel extends JPanel {
             keyboardBox = new JComboBox<>(TypistConfig.Keyboard.values());
             styleCombo(styleBox); styleCombo(keyboardBox);
 
-            wristCB      = styledCheck("🧤 Wrist Support  (burnout −2 turns)");
-            energyCB     = styledCheck("☕ Energy Drink   (acc +10% first half, −10% second)");
-            headphonesCB = styledCheck("🎧 Noise-Cancelling Headphones  (mistype chance −2%)");
+            wristCB      = styledCheck("Wrist Support  (burnout −2 turns)");
+            energyCB     = styledCheck("Energy Drink   (acc +10% first half, −10% second)");
+            headphonesCB = styledCheck("Noise-Cancelling Headphones  (mistype chance −2%)");
 
             sponsorBox = new JComboBox<>(TypistConfig.Sponsor.values());
             styleCombo(sponsorBox);
@@ -183,10 +183,10 @@ public class CustomisePanel extends JPanel {
             p.setBackground(UITheme.BG_DARK);
             p.setPreferredSize(new Dimension(260, 0));
 
-            p.add(card(section("👤 Identity"), row("Name", nameField),
+            p.add(card(section("Identity"), row("Name", nameField),
                        row("Symbol", symbolField), colourRow()));
             p.add(Box.createVerticalStrut(16));
-            p.add(card(section("🏢 Sponsor"), sponsorBox, sponsorHint()));
+            p.add(card(section("Sponsor"), sponsorBox, sponsorHint()));
             return p;
         }
 
@@ -196,11 +196,11 @@ public class CustomisePanel extends JPanel {
             p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
             p.setBackground(UITheme.BG_DARK);
 
-            p.add(card(section("🎯 Typing Style"), styleBox, styleDesc()));
+            p.add(card(section("Typing Style"), styleBox, styleDesc()));
             p.add(Box.createVerticalStrut(16));
-            p.add(card(section("⌨ Keyboard"), keyboardBox, keyboardDesc()));
+            p.add(card(section("Keyboard"), keyboardBox, keyboardDesc()));
             p.add(Box.createVerticalStrut(16));
-            p.add(card(section("🎒 Accessories"), wristCB, energyCB, headphonesCB));
+            p.add(card(section("Accessories"), wristCB, energyCB, headphonesCB));
             p.add(Box.createVerticalStrut(12));
             p.add(impactLabel);
             return p;
