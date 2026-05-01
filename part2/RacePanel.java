@@ -3,7 +3,6 @@ package part2;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
-import java.awt.geom.*;
 import java.util.List;
 
 /**
@@ -21,14 +20,14 @@ public class RacePanel extends JPanel {
     private Runnable                          onFinish;
     private List<RaceRecord>                  lastRecords;
 
-    // ── Sub-panels ────────────────────────────────────────────────────────────
+    // Sub-panels 
     private final PassageView  passageView;
     private final LanesPanel   lanesPanel;
     private final JLabel       turnLabel    = new JLabel("Turn 0");
     private final JLabel       statusLabel  = new JLabel("Race in progress…");
     private final JButton      skipBtn      = new JButton("Skip to end");
 
-    // ── Constructor ───────────────────────────────────────────────────────────
+    // Constructor 
     public RacePanel(RaceEngine engine) {
         this.engine = engine;
         setLayout(new BorderLayout(0, 0));
@@ -45,7 +44,7 @@ public class RacePanel extends JPanel {
         timer = new Timer(120, e -> tick());
     }
 
-    // ── Public API ────────────────────────────────────────────────────────────
+    // Public API 
     public void startRace() {
         engine.start();
         raceStart = System.currentTimeMillis();
@@ -59,7 +58,7 @@ public class RacePanel extends JPanel {
     public void setOnFinish(Runnable r) { onFinish = r; }
     public List<RaceRecord> getLastRecords() { return lastRecords; }
 
-    // ── Tick ──────────────────────────────────────────────────────────────────
+    // Tick 
     private void tick() {
         engine.tick();
         long elapsed = System.currentTimeMillis() - raceStart;
@@ -80,7 +79,7 @@ public class RacePanel extends JPanel {
         lanesPanel.repaint();
     }
 
-    // ── Builder helpers ───────────────────────────────────────────────────────
+    // Builder helpers 
     private JPanel buildHeader() {
         JPanel p = new JPanel(new BorderLayout(14, 0));
         p.setBackground(UITheme.BG_DARK);
@@ -255,9 +254,7 @@ public class RacePanel extends JPanel {
         }
     }
 
-    // ══════════════════════════════════════════════════════════════════════════
     // Inner: lanes / progress bars
-    // ══════════════════════════════════════════════════════════════════════════
     private static class LanesPanel extends JPanel {
         private final RaceEngine engine;
         LanesPanel(RaceEngine e) {
@@ -314,7 +311,7 @@ public class RacePanel extends JPanel {
                 // Right-side status
                 String status;
                 if (t.isBurntOut()) {
-                    status = "🔥 BURNT OUT (" + t.getBurnoutTurnsRemaining() + ")";
+                    status = "BURNT OUT (" + t.getBurnoutTurnsRemaining() + ")";
                     g.setColor(UITheme.RED);
                 } else if (t.justMistyped()) {
                     status = "← MISTYPED";

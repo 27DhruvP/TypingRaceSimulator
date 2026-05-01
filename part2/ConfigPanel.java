@@ -3,7 +3,6 @@ package part2;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
-import java.util.List;
 
 /**
  * Screen 1: Race Configuration.
@@ -11,7 +10,7 @@ import java.util.List;
  */
 public class ConfigPanel extends JPanel {
 
-    // ── Predefined passages ───────────────────────────────────────────────────
+    // Predefined passages
     private static final String[][] PASSAGES = {
         { "Short  (~40 chars)",
           "The quick brown fox jumps over the lazy dog." },
@@ -26,7 +25,7 @@ public class ConfigPanel extends JPanel {
         + "which ideas bloom or wither depending on the fingers that tend them." }
     };
 
-    // ── Widgets ───────────────────────────────────────────────────────────────
+    //  Widgets 
     private final JComboBox<String> passageBox   = new JComboBox<>();
     private final JTextArea         passageArea  = new JTextArea(4, 40);
     private final JSpinner          seatSpinner  = new JSpinner(new SpinnerNumberModel(3, 2, 6, 1));
@@ -37,7 +36,7 @@ public class ConfigPanel extends JPanel {
 
     private Runnable onNext;
 
-    // ── Constructor ───────────────────────────────────────────────────────────
+    // Constructor 
     public ConfigPanel() {
         setLayout(new BorderLayout(20, 20));
         setBackground(UITheme.BG_DARK);
@@ -48,7 +47,7 @@ public class ConfigPanel extends JPanel {
         add(buildSouth(),    BorderLayout.SOUTH);
     }
 
-    // ── Build helpers ─────────────────────────────────────────────────────────
+    // Build helpers
 
     private JLabel buildTitle() {
         JLabel lbl = new JLabel("⌨  TYPING RACE  — Configure Race", SwingConstants.CENTER);
@@ -165,7 +164,7 @@ public class ConfigPanel extends JPanel {
         return p;
     }
 
-    // ── Logic ─────────────────────────────────────────────────────────────────
+    // Logic
 
     private void onPassageSelected() {
         int idx = passageBox.getSelectedIndex();
@@ -196,7 +195,7 @@ public class ConfigPanel extends JPanel {
         if (onNext != null) onNext.run();
     }
 
-    // ── Public getters for next screen ────────────────────────────────────────
+    // Public getters for next screen 
 
     public String  getPassageText()    { return passageArea.getText().trim(); }
     public boolean isAutocorrect()     { return autocorrect.isSelected(); }
@@ -206,7 +205,7 @@ public class ConfigPanel extends JPanel {
 
     public void setOnNext(Runnable r) { onNext = r; }
 
-    // ── Style helpers ─────────────────────────────────────────────────────────
+    // Style helpers
 
     private JPanel card() {
         JPanel p = new JPanel();

@@ -7,7 +7,7 @@ public final class UITheme {
 
     private UITheme() {}
 
-    // ── Palette — Light Theme ─────────────────────────────────────────────────
+    // Palette — Light Theme
 
     // Backgrounds
     public static final Color BG_DARK   = new Color(0xF0F4FF); // page background (soft blue-white)
@@ -31,7 +31,7 @@ public final class UITheme {
     // Borders
     public static final Color BORDER    = new Color(0xCDD4EC);
 
-    // ── Fonts ─────────────────────────────────────────────────────────────────
+    // Fonts
     public static final Font FONT_TITLE = new Font("SansSerif", Font.BOLD,  22);
     public static final Font FONT_HEAD  = new Font("SansSerif", Font.BOLD,  15);
     public static final Font FONT_BODY  = new Font("SansSerif", Font.PLAIN, 13);
@@ -46,7 +46,7 @@ public final class UITheme {
     public static final Font SMALL  = FONT_SMALL;
     public static final Font MONO   = FONT_MONO;
 
-    // ── Global apply ──────────────────────────────────────────────────────────
+    // Global apply
     public static void apply(JComponent c) {
         c.setBackground(BG_DARK);
         c.setForeground(TEXT_MAIN);
@@ -54,7 +54,7 @@ public final class UITheme {
         c.setOpaque(true);
     }
 
-    // ── Inputs ────────────────────────────────────────────────────────────────
+    // Inputs 
     public static void styleInput(JComponent c) {
         c.setBackground(BG_INPUT);
         c.setForeground(TEXT_MAIN);

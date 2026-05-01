@@ -21,7 +21,7 @@ public class CustomisePanel extends JPanel {
     private Runnable onBack;
     private Runnable onNext;
 
-    // ── Default symbols and colours per seat ─────────────────────────────────
+    // Default symbols and colours per seat
     private static final String[] DEFAULT_SYMBOLS = {"①","②","③","④","⑤","⑥"};
     private static final Color[]  DEFAULT_COLORS  = {
         new Color(0x7C5CE8), new Color(0xFF6B6B), new Color(0x4AE26A),
@@ -31,7 +31,7 @@ public class CustomisePanel extends JPanel {
         "TURBOFINGERS","QWERTY_QUEEN","HUNT_N_PECK","SPEED_DEMON","NIGHT_OWL","IRON_FIST"
     };
 
-    // ── Constructor ───────────────────────────────────────────────────────────
+    // Constructor
     public CustomisePanel(int seatCount) {
         setLayout(new BorderLayout(0, 0));
         setBackground(UITheme.BG_DARK);
@@ -41,7 +41,7 @@ public class CustomisePanel extends JPanel {
         add(buildFooter(), BorderLayout.SOUTH);
     }
 
-    // ── Builder helpers ───────────────────────────────────────────────────────
+    // Builder helpers 
     private JPanel buildHeader() {
         JPanel p = new JPanel(new BorderLayout());
         p.setBackground(UITheme.BG_DARK);
@@ -92,7 +92,7 @@ public class CustomisePanel extends JPanel {
         return p;
     }
 
-    // ── Public API ────────────────────────────────────────────────────────────
+    // Public API 
     public List<TypistConfig> buildConfigs() {
         List<TypistConfig> list = new ArrayList<>();
         for (SeatEditor ed : editors) list.add(ed.toConfig());
@@ -102,7 +102,7 @@ public class CustomisePanel extends JPanel {
     public void setOnBack(Runnable r) { onBack = r; }
     public void setOnNext(Runnable r) { onNext = r; }
 
-    // ── Style helper ──────────────────────────────────────────────────────────
+    // Style helper 
     private void styleBtn(JButton b, Color bg, Color fg) {
         b.setBackground(bg); b.setForeground(fg);
         b.setFont(UITheme.FONT_HEAD); b.setFocusPainted(false);
@@ -110,9 +110,9 @@ public class CustomisePanel extends JPanel {
         b.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
-    // ══════════════════════════════════════════════════════════════════════════
+    
     // Inner class: one editor per seat
-    // ══════════════════════════════════════════════════════════════════════════
+    
     private static class SeatEditor extends JPanel {
 
         private final JTextField  nameField;
@@ -135,7 +135,7 @@ public class CustomisePanel extends JPanel {
 
             chosenColor = defColor;
 
-            // ── Fields ────────────────────────────────────────────────────────
+            // Fields 
             nameField    = styledField(defName);
             symbolField  = styledField(defSym);
             symbolField.setPreferredSize(new Dimension(60, 32));
@@ -206,7 +206,7 @@ public class CustomisePanel extends JPanel {
             return p;
         }
 
-        // ── Colour picker ──────────────────────────────────────────────────────
+        // Colour picker 
         private void pickColour() {
             Color c = JColorChooser.showDialog(this, "Choose typist colour", chosenColor);
             if (c != null) {
@@ -215,7 +215,7 @@ public class CustomisePanel extends JPanel {
             }
         }
 
-        // ── Impact summary ─────────────────────────────────────────────────────
+        // Impact summary 
         private void updateImpact() {
             TypistConfig cfg = toConfig();
             double acc = cfg.computeBaseAccuracy() * 100;
@@ -232,7 +232,7 @@ public class CustomisePanel extends JPanel {
                 acc, mis, bdur, sponsor));
         }
 
-        // ── toConfig ──────────────────────────────────────────────────────────
+        // toConfig 
         TypistConfig toConfig() {
             TypistConfig c = new TypistConfig();
             c.name     = nameField.getText().trim().isEmpty() ? "Typist" : nameField.getText().trim();
@@ -247,7 +247,7 @@ public class CustomisePanel extends JPanel {
             return c;
         }
 
-        // ── Layout utilities ──────────────────────────────────────────────────
+        // Layout utilities 
         private JPanel card(Component... comps) {
             JPanel p = new JPanel();
             p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));

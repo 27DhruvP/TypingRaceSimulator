@@ -8,12 +8,12 @@ import java.awt.Color;
  */
 public class TypistConfig {
 
-    // ── Identity ──────────────────────────────────────────────────────────────
+    // Identity 
     public String name   = "Typist";
     public String symbol = "①";
     public Color  color  = new Color(0x4A90D9);
 
-    // ── Style (affects base accuracy & burnout) ───────────────────────────────
+    // Style (affects base accuracy & burnout) 
     public enum Style {
         TOUCH_TYPIST   ("Touch Typist",    0.85, 0.05),
         HUNT_N_PECK    ("Hunt & Peck",     0.55, 0.02),
@@ -27,7 +27,7 @@ public class TypistConfig {
         @Override public String toString() { return label; }
     }
 
-    // ── Keyboard (affects mistype chance & speed) ─────────────────────────────
+    // Keyboard (affects mistype chance & speed) 
     public enum Keyboard {
         MECHANICAL    ("Mechanical",    0.03,  1.0),
         MEMBRANE      ("Membrane",      0.05,  0.95),
@@ -41,12 +41,12 @@ public class TypistConfig {
         @Override public String toString() { return label; }
     }
 
-    // ── Accessories ───────────────────────────────────────────────────────────
+    // Accessories 
     public boolean wristSupport        = false;  // burnout duration -2
     public boolean energyDrink         = false;  // acc +0.10 first half, -0.10 second
     public boolean noiseCancelHeadphones = false; // mistype chance -0.02
 
-    // ── Sponsor ───────────────────────────────────────────────────────────────
+    // Sponsor
     public enum Sponsor {
         NONE        ("No Sponsor",   "",                         0),
         KEYCORP     ("KeyCorp",      "Finish without burnout → +50 pts",     50),
@@ -61,7 +61,7 @@ public class TypistConfig {
         @Override public String toString() { return label; }
     }
 
-    // ── Selected values ───────────────────────────────────────────────────────
+    // Selected values
     public Style    style    = Style.TOUCH_TYPIST;
     public Keyboard keyboard = Keyboard.MECHANICAL;
     public Sponsor  sponsor  = Sponsor.NONE;

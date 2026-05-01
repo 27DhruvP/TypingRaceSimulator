@@ -8,31 +8,31 @@ import java.util.*;
  */
 public class AppState {
 
-    // ── History ───────────────────────────────────────────────────────────────
+    // History
     private final List<RaceRecord> allRecords = new ArrayList<>();
     // per-name lists
     private final Map<String, List<RaceRecord>> historyByName = new LinkedHashMap<>();
 
-    // ── Leaderboard (cumulative points) ───────────────────────────────────────
+    //Leaderboard (cumulative points)
     private final Map<String, Integer> cumulativePoints   = new LinkedHashMap<>();
     private final Map<String, Integer> consecutiveWins    = new LinkedHashMap<>();
     private final Map<String, Integer> racesWithoutBurnout= new LinkedHashMap<>();
     private final Map<String, Integer> totalRaces         = new LinkedHashMap<>();
     private final Map<String, Double>  personalBestWpm    = new LinkedHashMap<>();
 
-    // ── Badges earned per typist ──────────────────────────────────────────────
+    // Badges earned per typist
     private final Map<String, Set<String>> badges = new LinkedHashMap<>();
 
-    // ── Sponsor earnings ──────────────────────────────────────────────────────
+    //  Sponsor earnings
     private final Map<String, Integer> earnings  = new LinkedHashMap<>();
     private final Map<String, Integer> upgrades  = new LinkedHashMap<>();  // 0=none,1=keyboard,2=wrist
 
-    // ── Singleton ─────────────────────────────────────────────────────────────
+    // Singleton
     private static AppState instance;
     public  static AppState get() { if (instance == null) instance = new AppState(); return instance; }
     private AppState() {}
 
-    // ── Ingestion ─────────────────────────────────────────────────────────────
+    // Ingestion
     public void recordRace(List<RaceRecord> records, List<TypistConfig> configs) {
         allRecords.addAll(records);
 
@@ -95,7 +95,7 @@ public class AppState {
         if (cumulativePoints.getOrDefault(name, 0) >= 100)       b.add("💯 Century Club");
     }
 
-    // ── Queries ───────────────────────────────────────────────────────────────
+    // Queries
     public List<RaceRecord>  getHistory(String name) {
         return historyByName.getOrDefault(name, Collections.emptyList());
     }

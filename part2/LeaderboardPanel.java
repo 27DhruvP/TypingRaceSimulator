@@ -20,7 +20,7 @@ public class LeaderboardPanel extends JPanel {
     private Runnable onRaceAgain;
     private Runnable onNewConfig;
 
-    // ── Constructor ───────────────────────────────────────────────────────────
+    // Constructor 
     public LeaderboardPanel() {
         setLayout(new BorderLayout(0, 0));
         setBackground(UITheme.BG_DARK);
@@ -39,7 +39,7 @@ public class LeaderboardPanel extends JPanel {
         add(buildFooter(), BorderLayout.SOUTH);
     }
 
-    // ── Public API ────────────────────────────────────────────────────────────
+    // Public API 
     public void refresh() {
         contentArea.removeAll();
 
@@ -69,7 +69,7 @@ public class LeaderboardPanel extends JPanel {
     public void setOnRaceAgain (Runnable r) { onRaceAgain = r; }
     public void setOnNewConfig (Runnable r) { onNewConfig = r; }
 
-    // ── Builders ──────────────────────────────────────────────────────────────
+    // Builders 
 
     private JPanel buildHeader() {
         JPanel p = new JPanel(new BorderLayout());
@@ -230,7 +230,7 @@ public class LeaderboardPanel extends JPanel {
         return styledScrollTable(data, cols, Math.min(rev.size(), 12));
     }
 
-    // ── Helpers ───────────────────────────────────────────────────────────────
+    // Helpers 
 
     private JScrollPane styledScrollTable(Object[][] data, String[] cols, int visRows) {
         DefaultTableModel model = new DefaultTableModel(data, cols) {

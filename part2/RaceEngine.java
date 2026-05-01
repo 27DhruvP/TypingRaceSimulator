@@ -8,12 +8,12 @@ import java.util.*;
  */
 public class RaceEngine {
 
-    // ── Constants (mirrors TypingRace) ────────────────────────────────────────
+    // Constants (mirrors TypingRace) 
     private static final double BASE_MISTYPE_CHANCE = 0.05;
     private static final int    SLIDE_BACK_AMOUNT   = 2;
     private static final int    BURNOUT_DURATION    = 8;
 
-    // ── Passage & config ──────────────────────────────────────────────────────
+    // Passage & config 
     private final String   passage;
     private final int      passageLength;
 
@@ -22,7 +22,7 @@ public class RaceEngine {
     private final boolean caffeineMode;
     private final boolean nightShift;
 
-    // ── Typist state ──────────────────────────────────────────────────────────
+    // Typist state 
     private final List<Typist>       typists     = new ArrayList<>();
     private final List<TypistConfig> configs     = new ArrayList<>();
     private final List<Color2>       colors      = new ArrayList<>();   // lightweight record
@@ -34,7 +34,7 @@ public class RaceEngine {
     private final Map<Typist, Integer> finishTurn       = new LinkedHashMap<>();
     private final Map<Typist, Double>  accuracyAtStart  = new LinkedHashMap<>();
 
-    // ── Race state ────────────────────────────────────────────────────────────
+    // Race state 
     private int  turn        = 0;
     private boolean finished = false;
     private Typist  winner   = null;
@@ -51,7 +51,7 @@ public class RaceEngine {
     // small record to hold colour alongside a typist
     public record Color2(java.awt.Color color) {}
 
-    // ── Constructor ───────────────────────────────────────────────────────────
+    // Constructor 
     public RaceEngine(String passage,
                       boolean autocorrectOn,
                       boolean caffeineMode,
@@ -63,7 +63,7 @@ public class RaceEngine {
         this.nightShift    = nightShift;
     }
 
-    // ── Setup ─────────────────────────────────────────────────────────────────
+    // Setup 
     public void addTypist(TypistConfig cfg) {
         double acc = cfg.computeBaseAccuracy();
         if (nightShift) acc = Math.max(0, acc - 0.08);
@@ -86,7 +86,7 @@ public class RaceEngine {
     public void addTickListener  (TickListener l)   { tickListeners.add(l); }
     public void addFinishListener(FinishListener l) { finishListeners.add(l); }
 
-    // ── Accessors for GUI ─────────────────────────────────────────────────────
+    // Accessors for GUI 
     public List<Typist>       getTypists() { return Collections.unmodifiableList(typists); }
     public List<TypistConfig> getConfigs() { return Collections.unmodifiableList(configs); }
     public List<Color2>       getColors()  { return Collections.unmodifiableList(colors); }
@@ -102,7 +102,7 @@ public class RaceEngine {
         return idx >= 0 ? colors.get(idx).color() : java.awt.Color.WHITE;
     }
 
-    // ── Main simulation step ──────────────────────────────────────────────────
+    // Main simulation step 
     public void start() {
         for (Typist t : typists) t.resetToStart();
         raceStartMs = System.currentTimeMillis();
@@ -148,7 +148,7 @@ public class RaceEngine {
         }
     }
 
-    // ── Per-typist logic ──────────────────────────────────────────────────────
+    // Per-typist logic 
     private void advanceTypist(Typist t, TypistConfig cfg) {
         t.clearMistype();
 
@@ -204,7 +204,7 @@ public class RaceEngine {
         }
     }
 
-    // ── Record building ───────────────────────────────────────────────────────
+    // Record building 
     private List<RaceRecord> buildRecords() {
         // Sort by finish turn (lower = better), then by progress descending
         List<Typist> sorted = new ArrayList<>(typists);

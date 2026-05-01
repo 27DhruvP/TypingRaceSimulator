@@ -20,7 +20,7 @@ public class StatsPanel extends JPanel {
     private Runnable onRaceAgain;
     private Runnable onLeaderboard;
 
-    // ── Constructor ───────────────────────────────────────────────────────────
+    // Constructor 
     public StatsPanel() {
         setLayout(new BorderLayout(0, 0));
         setBackground(UITheme.BG_DARK);
@@ -34,7 +34,7 @@ public class StatsPanel extends JPanel {
         contentArea.setBorder(new EmptyBorder(20, 40, 20, 40));
     }
 
-    // ── Public API ────────────────────────────────────────────────────────────
+    // Public API 
     public void populate(List<RaceRecord> records, List<TypistConfig> configs) {
         contentArea.removeAll();
 
@@ -51,19 +51,19 @@ public class StatsPanel extends JPanel {
         }
 
         // Results table
-        contentArea.add(sectionLabel("📊 Race Results"));
+        contentArea.add(sectionLabel("Race Results"));
         contentArea.add(Box.createVerticalStrut(8));
         contentArea.add(buildResultsTable(records));
         contentArea.add(Box.createVerticalStrut(24));
 
         // Accuracy changes
-        contentArea.add(sectionLabel("📈 Accuracy Changes"));
+        contentArea.add(sectionLabel("Accuracy Changes"));
         contentArea.add(Box.createVerticalStrut(8));
         contentArea.add(buildAccuracyPanel(records, configs));
         contentArea.add(Box.createVerticalStrut(24));
 
         // Badges
-        contentArea.add(sectionLabel("🎖 Badges Earned This Race"));
+        contentArea.add(sectionLabel("Badges Earned This Race"));
         contentArea.add(Box.createVerticalStrut(8));
         contentArea.add(buildBadgesPanel(records));
 
@@ -74,7 +74,7 @@ public class StatsPanel extends JPanel {
     public void setOnRaceAgain  (Runnable r) { onRaceAgain   = r; }
     public void setOnLeaderboard(Runnable r) { onLeaderboard = r; }
 
-    // ── Builder helpers ───────────────────────────────────────────────────────
+    // Builder helpers 
 
     private JPanel buildHeader() {
         JPanel p = new JPanel(new BorderLayout());
@@ -105,7 +105,7 @@ public class StatsPanel extends JPanel {
     private JScrollPane buildResultsTable(List<RaceRecord> records) {
         String[] cols = {"Pos", "Name", "WPM", "Accuracy %", "Burnouts", "Points"};
         Object[][] data = new Object[records.size()][cols.length];
-        String[] medals = {"🥇","🥈","🥉","4th","5th","6th"};
+        String[] medals = {"1st","2nd","3rd","4th","5th","6th"};
 
         for (int i = 0; i < records.size(); i++) {
             RaceRecord r = records.get(i);
@@ -155,7 +155,7 @@ public class StatsPanel extends JPanel {
             // Personal best note
             double best = AppState.get().getBestWpm(r.typistName);
             if (r.wpm >= best - 0.01) {
-                JLabel pb = new JLabel("   ⭐ New personal best WPM: " +
+                JLabel pb = new JLabel("New personal best WPM: " +
                     String.format("%.1f", r.wpm));
                 pb.setFont(UITheme.FONT_SMALL);
                 pb.setForeground(UITheme.TEXT_GOLD);
@@ -196,7 +196,7 @@ public class StatsPanel extends JPanel {
         return p;
     }
 
-    // ── Style helpers ─────────────────────────────────────────────────────────
+    // Style helpers
 
     private JLabel sectionLabel(String text) {
         JLabel l = new JLabel(text);

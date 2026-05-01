@@ -133,7 +133,7 @@ public class Main {
         leaderboardPanel.setOnNewConfig(() -> cards.show(deck, CARD_CONFIG));
     }
 
-    // ── Entry points ──────────────────────────────────────────────────────────
+    // Entry points 
 
     public static void startRaceGUI() {
         new Main();
