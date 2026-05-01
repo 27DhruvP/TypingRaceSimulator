@@ -7,7 +7,7 @@ public final class UITheme {
 
     private UITheme() {}
 
-    // Palette — Light Theme
+    // Palette - Light Theme
 
     // Backgrounds
     public static final Color BG_DARK   = new Color(0xF0F4FF); // page background (soft blue-white)
